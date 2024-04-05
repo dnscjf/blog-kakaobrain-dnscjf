@@ -19,6 +19,11 @@
 - `<img src="경로/파일명.확장자" />`
 - `<img src="경로/파일명.확장자" alt="이미지설명" />`
 
+### 1.3. 목록태그(`ul, li`)
+
+- 필수입니다.
+- 판단하실 때 레이아웃이면 div, 내용이 동일한 형태면 ul, li
+
 ## 2. CSS 선택자
 
 ### 2.1. 범위 안쪽에 있는 태그 찾기
@@ -144,7 +149,16 @@
   /* 가로 양쪽 균등 정렬 */
   justify-content: space-between;
   justify-content: space-around;
+  /* 아이템과 아이템 사이의 여백 */
+  gap: 30px;
 }
 ```
 
 - item 용 flex (요소들)
+
+### 2.4. 글꼴
+
+- 초기 디자인 및 css 작업은 글꼴에 대한 협의가 끝나고 진행한다. (1순위)
+- [구글폰트](https://fonts.google.com/?query=inter) 검색 > [눈누](https://noonnu.cc/) 검색
+- 존재 하지 않는 경우 직접 폰트 생성진행
+
