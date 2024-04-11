@@ -13,6 +13,7 @@ a {
   color: #000000;
 }
 html {
+  overflow-x: hidden;
 }
 body {
   font-family: "Inter", "Noto Sans KR", sans-serif;
@@ -23,6 +24,28 @@ body {
 
 .br-20 {
   border-radius: 20px;
+}
+
+.bt-wrap {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.bt-more {
+  display: block;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 15px 20px;
+}
+
+.bt-more-hover {
+  background: #000000;
+  color: #ffffff;
 }
 
 .wrap {
