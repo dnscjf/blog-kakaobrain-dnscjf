@@ -19,6 +19,31 @@
 
   overflow: hidden;
 }
+
+.topslide .swiper-pagination {
+  bottom: 30px !important;
+}
+
+.topslide .swiper-pagination-bulle {
+  width: 4px !important;
+  height: 4px !important;
+  background: #ffffff !important;
+  opacity: 0.95 !important;
+  border-radius: 4px !important;
+  transition: width 0.3s;
+  margin: 0 2px !important;
+}
+.topslide .swiper-pagination-bulle-active {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  width: 20px !important;
+}
+
+.topslide {
+  width: 100%;
+  height: 100%;
+}
+
 .main-top-slide a {
   display: flex;
   justify-content: flex-end;
@@ -27,7 +52,7 @@
 
   width: 100%;
   height: 100%;
-  background: url("../css/www/images/b1.png") no-repeat center;
+  background: url("../images/b1.png") no-repeat center;
   background-size: cover;
 }
 
@@ -41,6 +66,11 @@
   overflow: hidden;
 }
 
+.bannerslide {
+  width: 100%;
+  height: 100%;
+}
+
 .main-top-banner a {
   display: flex;
   justify-content: flex-end;
@@ -49,7 +79,7 @@
 
   width: 100%;
   height: 100%;
-  background: url("../css/www/images/br.png") no-repeat center;
+  background: url("../images/br.png") no-repeat center;
   background-size: cover;
 }
 
@@ -164,7 +194,7 @@
   display: block;
   width: 100%;
   height: 160px;
-  background: #031efb url("../css/www/images/1pc.png") no-repeat center;
+  background: #031efb url("../images/1pc.png") no-repeat center;
   background-size: 100%;
 }
 .main-bottom-list-picks {
@@ -203,14 +233,18 @@
   align-items: flex-end;
   width: 100%;
   height: 330px;
-  background: url("../css/www/images/p1.png") no-repeat center;
+  background: url("../images/p1.png") no-repeat center;
   background-size: cover;
   margin-bottom: 30px;
+
+  overflow: hidden;
+
   /* 배치된 내용의 좌표(x, y) 가 이동한다. */
   transition: all 0.2s ease-in;
 }
 .card-link:hover {
   transform: translateY(-10px);
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.2));
 }
 
 .card-txt {
