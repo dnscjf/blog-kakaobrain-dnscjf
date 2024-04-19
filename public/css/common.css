@@ -51,4 +51,6 @@ body {
 }
 
 .wrap {
+  position: relative;
+  padding-top: 70px;
 }

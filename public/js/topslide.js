@@ -34,8 +34,9 @@ window.addEventListener("load", function () {
 
       // 3. html 완성후 swiper 를 생성한다.
       // 기본코드를 넣어보자.
-      var topSlide = new Swiper(".topslide", {
-        Loop: true,
+      const topSlide = new Swiper(".topslide", {
+        loop: true,
+        speed: 800,
         autoplay: {
           delay: 2500,
           disableOnInteraction: false,
