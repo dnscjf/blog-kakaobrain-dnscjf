@@ -1,9 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import SlideTopMainItem from "./SlideTopMainItem";
 
 const SlideTopMain = () => {
   // hook 자리
   const whereTag = useRef(null);
   const slideArea = useRef(null);
+  // 슬라이드 데이터 관리 (화면 갱신 반영)
+  const [list, setList] = useState([]);
 
   // js 코드 자리
   useEffect(() => {
@@ -20,8 +23,11 @@ const SlideTopMain = () => {
       })
       .then(result => {
         console.log(result);
+
+        setList(result);
+
         // json 즉 javaScript Object Notaion 자료를 활용
-        let slideTags = "";
+        // let slideTags = "";
 
         // 혹시 배열.foreach 가능할까요? 개선
         // for (let i = 0; i < result.length; i++) {
@@ -43,23 +49,24 @@ const SlideTopMain = () => {
         // index : 순서번호
         // item : 해당하는 배열 번호(인덱스)의 내용물
         // arr :  원본배열인데 생략하는 게 일반적
-        result.forEach((item, index, arr) => {
-          // 할일
-          const test = `<div class="swiper-slide">
-            <a href="${item.url}" style="background:url('./images/${item.pic}') no-repeat center; background-size: cover;">
-                <p class="slide-title">
-                ${item.title}
-                </p>
-            </a>
-         </div>`;
-          // 문자열을 모아둠
-          slideTags = slideTags + test;
-        });
+        // result.forEach((item, index, arr) => {
+        //   // 할일
+        //   const test = `<div class="swiper-slide">
+        //     <a href="${item.url}" style="background:url('./images/${item.pic}') no-repeat center; background-size: cover;">
+        //         <p class="slide-title">
+        //         ${item.title}
+        //         </p>
+        //     </a>
+        //  </div>`;
+        //   // 문자열을 모아둠
+        //   slideTags = slideTags + test;
+        // });
 
         // console.log(slideTags);
 
         // const whereTag = document.querySelector(".topslide .swiper-wrapper");
-        whereTag.current.innerHTML = slideTags;
+        // whereTag.current.innerHTML = slideTags;
+
         const topSlide = new Swiper(".topslide", {
           loop: true,
           speed: 800,
@@ -92,7 +99,17 @@ const SlideTopMain = () => {
   return (
     <div className="main-top-slide br-20">
       <div className="swiper topslide" ref={slideArea}>
-        <div className="swiper-wrapper" ref={whereTag}></div>
+        <div className="swiper-wrapper" ref={whereTag}>
+          {/* 아이템 배치 */}
+          {list.map((item, index, arr) => (
+            <SlideTopMainItem
+              key={index}
+              url={item.url}
+              pic={item.pic}
+              title={item.title}
+            ></SlideTopMainItem>
+          ))}
+        </div>
         <div className="swiper-pagination"></div>
       </div>
     </div>
