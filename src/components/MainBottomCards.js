@@ -5,24 +5,41 @@ const MainBottomCards = () => {
   const [cardSlide, setCardSlide] = useState(null);
   const [cardList, setCardList] = useState([]);
 
-  function makeCardSlide() {
+  const makeCardSlide = () => {
     const wWidth = window.innerWidth;
     if (wWidth > 1024) {
+      // swiper 를 제거
       if (cardSlide !== null) {
+        // swiper 를 제거하는 코드
         cardSlide.destroy();
-        setCardSlide(null);
+        // useState 는 함수가 종료되어야 화면에 반영된다.
+        setCardSlide(prev => null);
       }
     } else {
+      // swiper 를 생성한다.
+      // swiper 작동시키기(모바일에서만 작동해야함)
       if (cardSlide === null) {
         const tempSlide = new Swiper(".cardslide", {
           loop: true,
           slidesPerView: 4,
           spaceBetween: 20,
         });
+        // 즉시 갱신이 안되고 있다.(useEffect에서 체크하도록 적용)
+        // useState 는 함수가 종료되어야 화면에 반영된다.
         setCardSlide(tempSlide);
       }
     }
-  }
+  };
+
+  // 화면의 리사이즈에 따른 슬라이드 변경 코드
+  // cardSlide 상태가 바뀜을 체크한다.
+  useEffect(() => {
+    window.addEventListener("resize", makeCardSlide);
+    return () => {
+      window.removeEventListener("resize", makeCardSlide);
+    };
+  }, [cardSlide]);
+
   // hook 자리
   useEffect(() => {
     const dataUrl = "./apis/cards.json";
@@ -38,12 +55,7 @@ const MainBottomCards = () => {
       .catch(error => {
         console.log(error);
       });
-
-    window.addEventListener("resize", makeCardSlide);
-
-    return () => {
-      window.removeEventListener("resize", makeCardSlide);
-    };
+    return () => {};
   }, []);
 
   return (
