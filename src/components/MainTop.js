@@ -1,6 +1,7 @@
+import React from "react";
 import "../css/maintop.css";
-import SlideTopBanner from "./SlideTopBanner";
 import SlideTopMain from "./SlideTopMain";
+import SlideTopBanner from "./SlideTopBanner";
 const MainTop = () => {
   return (
     <div className="main-top">

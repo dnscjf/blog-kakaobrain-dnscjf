@@ -7,7 +7,6 @@ import Main from "./components/Main";
 import "./css/reset.css";
 import "./css/common.css";
 import { useState } from "react";
-import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -22,7 +21,6 @@ const Wrap = () => {
 
   return (
     <div className="wrap">
-      <App></App>
       <Header clickMbbt={clickMbbt} mbMenuOpen={mbMenuOpen}></Header>
       <MbHeader
         mbMenuOpen={mbMenuOpen}

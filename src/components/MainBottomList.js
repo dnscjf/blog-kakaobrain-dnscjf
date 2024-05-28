@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MainBottomListItem from "./MainBottomListItem";
+import { getCrew, getNews } from "../apis/api";
 
 const MainBottomList = () => {
   // use 의 hook 자리
@@ -8,36 +9,21 @@ const MainBottomList = () => {
   const [newsList, setNewsList] = useState([]);
   const [crewList, setCrewList] = useState([]);
 
+  const getNewsCall = async () => {
+    const result = await getNews();
+    setNewsList(result);
+  };
   useEffect(() => {
-    const dataUrl = "./apis/news.json";
-    fetch(dataUrl)
-      .then(response => {
-        const result = response.json();
-        return result;
-      })
-      .then(result => {
-        setNewsList(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
+    getNewsCall();
     return () => {};
   }, []);
 
+  const getCrewCall = async () => {
+    const result = await getCrew();
+    setCrewList(result);
+  };
   useEffect(() => {
-    const dataUrl = "./apis/crew.json";
-    fetch(dataUrl)
-      .then(response => {
-        const result = response.json();
-        return result;
-      })
-      .then(result => {
-        setCrewList(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    getCrewCall();
     return () => {};
   }, []);
 

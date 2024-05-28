@@ -1,21 +1,20 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const SlideTopBannerItem = ({ url, pic, title }) => {
-  const styleBanner = {
+  const styleObj = {
     background: `url('./images/${pic}') no-repeat center`,
-    backgroundsize: "cover",
+    backgroundSize: "cover",
   };
-
   useEffect(() => {
     return () => {};
   }, []);
 
   return (
-    <div className="swiper-slide">
-      <a href={url} style={styleBanner}>
-        <p className="slide-title">{title}</p>
-      </a>
-    </div>
+    <a href={url} style={{ styleObj }}>
+      <p className="slide-title">{title}</p>
+    </a>
   );
 };
 
